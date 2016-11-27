@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sunnycorp.error.RestException;
 import com.sunnycorp.model.User;
 import com.sunnycorp.repository.UserRepository;
 
@@ -33,7 +34,11 @@ public class UserRestController {
 	
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET) public User get(@PathVariable("id") int id) 
 	{
-		return userRepository.find(id); 
+		User user = userRepository.find(id); if (user == null) {
+			throw new RestException(1, "User not found!",
+					"User with id: " + id + " not found in the system");
+		}
+		return user;
 	}
 
 	@RequestMapping(value="/users/{id}", method=RequestMethod.PUT)

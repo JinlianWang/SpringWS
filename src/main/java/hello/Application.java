@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@ComponentScan(basePackages="hello,com.sunnycorp.model,com.sunnycorp.repository,com.sunnycorp.controller, com.sunnycorp.orchestrator")
+@ComponentScan(basePackages="hello,com.sunnycorp.model,com.sunnycorp.repository,com.sunnycorp.controller, com.sunnycorp.orchestrator, com.sunnycorp.error")
 public class Application {
 
     public static void main(String[] args) {
